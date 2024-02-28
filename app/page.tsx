@@ -1,24 +1,21 @@
 export default function Home() {
   return (
     <>
-      <div style={{ textAlign: "center" }}>
-        <img
-          src="https:www.example.com/image.jpg"
-          style={{ maxWidth: "100%", maxHeight: "100%", margin: "auto" }}
-        ></img>
-      </div>
-      <div className="grid grid-cols-4 mt-4">
-        <div className="text-center border border-black p-4 rounded">
-          Semestrai
+      <div className="grid-container">
+        <div className="text-left border border-gray p-4 rounded">
+          Studijų pažyma 1
         </div>
-        <div className="text-center border border-black p-4 rounded">
-          Studijos
+        <div className="text-left border border-gray p-4 rounded">
+          Studijų pažyma 2
         </div>
-        <div className="text-center border border-black p-4 rounded">
-          Akademinės Formos
+        <div className="text-left border border-gray p-4 rounded">
+          Studijų pažyma 3
         </div>
-        <div className="text-center border border-black p-4 rounded">
-          Įvykiai ir Renginiai
+        <div className="text-left border border-gray p-4 rounded">
+          Studijų pažyma 4
+        </div>
+        <div className="text-left border border-gray p-4 rounded">
+          Studijų pažyma 5
         </div>
       </div>
     </>
