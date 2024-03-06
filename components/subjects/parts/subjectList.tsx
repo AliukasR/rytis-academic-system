@@ -1,5 +1,4 @@
 import { ISubject } from "@/components/types/subject.t"
-import { propagateServerField } from "next/dist/server/lib/render-server"
 import { useEffect, useState } from "react"
 
 type IProps = { semesterId: number }
@@ -12,7 +11,7 @@ export function SubjectList(props: IProps) {
       setSubjects([])
       return
     }
-    fetch("/api/subjects?semesterId= ${semesterId}")
+    fetch(`/api/subjects?semesterId=${semesterId}`)
       .then((res) => res.json())
       .then((r) => setSubjects(r))
   }, [semesterId])
