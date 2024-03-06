@@ -15,7 +15,7 @@ export function SemesterDropdown(props: IProps) {
   return (
     <div className="grid grid-flow-col gap-x-2 justify-start">
       <label htmlFor="semester" className="text-sm font-medium text-gray-900">
-        Pasirinkite semestrą
+        Pasirinkite užsakymus
       </label>
       <select
         onChange={(e) => setSemesterId(Number(e.target.value) || 0)}
