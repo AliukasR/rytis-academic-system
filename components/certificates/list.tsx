@@ -40,7 +40,7 @@ export function CertList(props: IProps) {
             <td className="px-6 py-4">{findType(c.typeId)}</td>
             <td className="px-6 py-4">{c.company}</td>
             <td className="px-6 py-4">
-              <button tiitle="Keisti duomenis" onClick={() => changeCert(c.id)}>
+              <button title="Keisti duomenis" onClick={() => changeCert(c.id)}>
                 <PencilIcon className="w-5 h-5 stroke-blue-600" />
               </button>
             </td>
