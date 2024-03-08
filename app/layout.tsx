@@ -2,6 +2,12 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { ICertificate } from "@/components/types/certificate.t"
+
+type IMyDB = { certificates: ICertificate[] }
+export const myDB: IMyDB = {
+  certificates: [],
+}
 
 export const metadata: Metadata = {
   title: "Rycio akademine sistema",
