@@ -1,5 +1,5 @@
 "use server"
-import { IState } from "@/types/shared.t"
+import { IState } from "@/components/types/shared.t"
 import { postApi, putApi } from "@/utils/serverApi"
 import { z } from "zod"
 

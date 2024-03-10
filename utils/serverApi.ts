@@ -1,12 +1,12 @@
 const Site = `http://localhost:3000`
 
 export const getApi = async <T>(url: string): Promise<T> => {
-  const response = await fetch(`${SITE}${url}`)
+  const response = await fetch(`${Site}${url}`)
   return await response.json()
 }
 
 export const postApi = async (url: string, body: object, method = "POST") => {
-  const response = await fetch(`${SITE}${url}`, {
+  const response = await fetch(`${Site}${url}`, {
     method,
     headers: {
       "Content-Type": "application/json",

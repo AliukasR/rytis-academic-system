@@ -9,7 +9,7 @@ type IProps = { certTypes: ICertType[] }
 
 export function Wrapper(props: IProps) {
   const { certTypes } = props
-  const [editCert, setEditCert] = useState<ICertificate | underfined>()
+  const [editCert, setEditCert] = useState<ICertificate | undefined>()
   const [certificates, setCertificates] = useState<ICertificate[]>([])
 
   const getCertFromApi = () => {

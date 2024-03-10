@@ -1,3 +1,8 @@
+import { myDB } from "@/app/layout"
+import { type NextRequest } from "next/server"
+import { ICertType } from "@/components/types/certificate.t"
+import { ICertificate } from "@/components/types/certificate.t"
+
 export async function PUT(request: NextRequest) {
   const res: ICertificate = await request.json()
 
@@ -8,6 +13,6 @@ export async function PUT(request: NextRequest) {
   if (index === -1)
     return Response.json({ message: "Nepavyko pakeisti duomenų" })
 
-  myCertificates.splice(index, 1, res)
+  myCertificate.splice(index, 1, res)
   return Response.json({ message: "Pakeitimas sėkmingai įvykdytas" })
 }

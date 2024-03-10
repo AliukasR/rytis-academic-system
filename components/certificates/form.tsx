@@ -1,13 +1,14 @@
 "use client"
-import { IState } from "@/types/shared.t"
+import { IState } from "@/components/types/shared.t"
 import { useFormState } from "react-dom"
-import { ICertType, ICertificate } from "@/types/certificates"
+import { ICertType, ICertificate } from "@/components/types/certificate.t"
 import { SubmitButton } from "@/components/parts/submitButton"
-import { createCertificates } from "@/actions/certificates"
+import { createCertificates } from "@/app/actions/certificates"
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Select } from "../parts/select"
+import { Select } from "../parts/selext"
 import { toSelArr } from "@/utils/form/selectHelper"
 import { TextField } from "../parts/textField"
+import { IOption } from "../types/form.t"
 
 type IProps = {
   certTypes: ICertType[]
@@ -18,7 +19,7 @@ type IProps = {
 
 const initialState: IState = {
   message: "",
-  errors: underfined,
+  errors: undefined,
   isSaved: false,
 }
 
@@ -52,11 +53,11 @@ export function Form(props: IProps) {
       setEditCert(undefined)
     }
   }
-
+  //line 60 selProps was changed to selProp, reminder if the site doesn't work properly.
   return (
     <form ref={ref} action={handleAction} className="grid gap-y-5 max-w-md">
       <div className="grid grid-cols-2">
-        <Select options={toSelArr(certTypes, "title")} selProps={selProps} />
+        <Select options={toSelArr(certTypes, "title")} selProp={selProps} />
       </div>
       <div className="grid grid-cols-2">
         <TextField
@@ -67,7 +68,9 @@ export function Form(props: IProps) {
           errors={state?.errors?.company}
         />
       </div>
-      {editCert?.id && <input type="hidden" name="id" value={editCert} />}
+      {editCert?.id && (
+        <input type="hidden" name="id" value={String(editCert?.id)} />
+      )}
       <div
         className={`my-2 text-sm italic p-1 ${
           state?.errors ? "bg-red-100" : state?.message ? "bg-green-100" : ""
