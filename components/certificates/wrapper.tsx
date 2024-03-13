@@ -10,6 +10,7 @@ type IProps = { certTypes: ICertType[] }
 export function Wrapper(props: IProps) {
   const { certTypes } = props
   const [editCert, setEditCert] = useState<ICertificate | undefined>()
+  const [deleteCert, deleteCertFromApi] = useState<ICertificate | undefined>()
   const [certificates, setCertificates] = useState<ICertificate[]>([])
 
   const getCertFromApi = () => {
@@ -29,11 +30,14 @@ export function Wrapper(props: IProps) {
         getCertFromApi={getCertFromApi}
         setEditCert={setEditCert}
         editCert={editCert}
+        deleteCert={deleteCert}
+        deleteCertFromApi={deleteCertFromApi}
       />
       <CertList
         certTypes={certTypes}
         certificates={certificates}
         setEditCert={setEditCert}
+        deleteCertFromApi={deleteCertFromApi}
       />
     </div>
   )
