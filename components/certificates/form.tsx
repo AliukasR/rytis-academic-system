@@ -57,7 +57,7 @@ export function Form(props: IProps) {
   return (
     <form ref={ref} action={handleAction} className="grid gap-y-5 max-w-md">
       <div className="grid grid-cols-2">
-        <Select options={toSelArr(certTypes, "title")} selProp={selProps} />
+        <Select options={toSelArr(certTypes, "title")} selProps={selProps} />
       </div>
       <div className="grid grid-cols-2">
         <TextField
