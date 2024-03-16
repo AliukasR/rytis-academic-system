@@ -2,7 +2,7 @@
 import { PencilIcon } from "@heroicons/react/24/outline"
 import { TrashIcon } from "@heroicons/react/24/outline"
 import { ICertType, ICertificate } from "@/components/types/certificate.t"
-import { DELETE } from "@/app/api/certificates/[certificateid]/route"
+
 
 type IProps = {
   certTypes: ICertType[]
