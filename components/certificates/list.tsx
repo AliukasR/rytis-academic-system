@@ -24,9 +24,7 @@ export function CertList(props: IProps) {
   }
   const deleteCert = (id?: number) => {
     if (!id) return
-    const cert = certificates.find((i) => i.id === id)
-    if (!cert) return
-    deleteCertFromApi(cert)
+    deleteCertFromApi(certificates[id])
   }
 
   return (

@@ -3,7 +3,7 @@ import { ICertType, ICertificate } from "@/components/types/certificate.t"
 import { Form } from "./form"
 import { CertList } from "./list"
 import { useEffect, useState } from "react"
-import { getApi } from "@/utils/serverApi"
+import { getApi, deleteApi } from "@/utils/serverApi"
 
 type IProps = { certTypes: ICertType[] }
 
@@ -22,20 +22,14 @@ export function Wrapper(props: IProps) {
     getCertFromApi()
   }, [])
 
-  const deleteCertFromApi = (certificate: ICertificate) => {
-    fetch(`/api/certificates/${certificate.id}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (response.ok) {
-          getCertFromApi()
-        } else {
-          throw new Error("Nepavyko ištrinti sertifikato įrašo")
-        }
-      })
-      .catch((error) => {
-        console.error("Klaida ištrinant sertifikato įrašą: ", error)
-      })
+  const deleteCertFromApi = (id: number) => {
+    if (id === undefined) {
+      console.error("Cannot delete ")
+      return
+    }
+    deleteApi(`/api/certificates/${id}`)
+      .then(() => getCertFromApi())
+      .catch((error) => console.error("Error deleting certificate", error))
   }
 
   return (
@@ -50,7 +44,7 @@ export function Wrapper(props: IProps) {
         certTypes={certTypes}
         certificates={certificates}
         setEditCert={setEditCert}
-        deleteCertFromApi={deleteCertFromApi}
+        deleteCertFromApi={(cert) => deleteCertFromApi(cert.id as number)}
       />
     </div>
   )
