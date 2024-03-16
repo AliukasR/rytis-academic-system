@@ -22,12 +22,12 @@ export function Wrapper(props: IProps) {
     getCertFromApi()
   }, [])
 
-  const deleteCertFromApi = (id: number) => {
-    if (id === undefined) {
+  const deleteCertFromApi = (cert: ICertificate) => {
+    if (!cert || !cert.id) {
       console.error("Cannot delete ")
       return
     }
-    deleteApi(`/api/certificates/${id}`)
+    deleteApi(`/api/certificates/${cert.id}`)
       .then(() => getCertFromApi())
       .catch((error) => console.error("Error deleting certificate", error))
   }
@@ -44,7 +44,7 @@ export function Wrapper(props: IProps) {
         certTypes={certTypes}
         certificates={certificates}
         setEditCert={setEditCert}
-        deleteCertFromApi={(cert) => deleteCertFromApi(cert.id as number)}
+        deleteCertFromApi={deleteCertFromApi}
       />
     </div>
   )
