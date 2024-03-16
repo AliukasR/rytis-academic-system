@@ -10,7 +10,6 @@ type IProps = { certTypes: ICertType[] }
 export function Wrapper(props: IProps) {
   const { certTypes } = props
   const [editCert, setEditCert] = useState<ICertificate | undefined>()
-  const [deleteCert, deleteCertFromApi] = useState<ICertificate | undefined>()
   const [certificates, setCertificates] = useState<ICertificate[]>([])
 
   const getCertFromApi = () => {
@@ -23,6 +22,22 @@ export function Wrapper(props: IProps) {
     getCertFromApi()
   }, [])
 
+  const deleteCertFromApi = (certificate: ICertificate) => {
+    fetch(`/api/certificates/${certificate.id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.ok) {
+          getCertFromApi()
+        } else {
+          throw new Error("Nepavyko ištrinti sertifikato įrašo")
+        }
+      })
+      .catch((error) => {
+        console.error("Klaida ištrinant sertifikato įrašą: ", error)
+      })
+  }
+
   return (
     <div className="grid gap-y-9">
       <Form
@@ -30,8 +45,6 @@ export function Wrapper(props: IProps) {
         getCertFromApi={getCertFromApi}
         setEditCert={setEditCert}
         editCert={editCert}
-        deleteCert={deleteCert}
-        deleteCertFromApi={deleteCertFromApi}
       />
       <CertList
         certTypes={certTypes}
