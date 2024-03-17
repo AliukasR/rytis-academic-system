@@ -3,7 +3,6 @@ import { PencilIcon } from "@heroicons/react/24/outline"
 import { TrashIcon } from "@heroicons/react/24/outline"
 import { ICertType, ICertificate } from "@/components/types/certificate.t"
 
-
 type IProps = {
   certTypes: ICertType[]
   certificates: ICertificate[]
@@ -52,6 +51,7 @@ export function CertList(props: IProps) {
                 <PencilIcon className="w-5 h-5 stroke-blue-600" />
               </button>
               <button
+                type="button"
                 title="Istrinti duomenis"
                 onClick={() => deleteCert(c.id)}
               >
