@@ -23,7 +23,7 @@ export function CertList(props: IProps) {
   }
   const deleteCert = (id?: number) => {
     if (!id) return
-    const cert = certificates.find((cert) => cert.id === id)
+    const cert = certificates.find((i) => i.id === id)
     if (!cert) return
     deleteCertFromApi(cert)
     throw new Error("Error message")
@@ -56,7 +56,7 @@ export function CertList(props: IProps) {
               <button
                 type="button"
                 title="Istrinti duomenis"
-                onClick={() => deleteCertFromApi(c)}
+                onClick={() => deleteCert(c.id)}
               >
                 <TrashIcon className="w-5 h-5 stroke-red-600" />
               </button>

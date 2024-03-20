@@ -38,6 +38,7 @@ export function Wrapper(props: IProps) {
         certTypes={certTypes}
         getCertFromApi={getCertFromApi}
         setEditCert={setEditCert}
+        deleteApi={deleteApi}
         editCert={editCert}
       />
       <CertList
