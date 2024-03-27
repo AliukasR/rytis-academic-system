@@ -1,10 +1,9 @@
-import { SemesterSubjects } from "@/components/subjects/semesterSubjects"
+import { Wrapper } from "@/components/subjects/wrapper"
+import { ISubType } from "@/components/types/subject.t"
+import { getApi } from "@/utils/serverApi"
 
-export default function SubjectPage() {
-  return (
-    <div className="grid grid-flow-row gap-4">
-      <h1 className="font-bold text-x1">Užsakymai</h1>
-      <SemesterSubjects />
-    </div>
-  )
+export default async function SubjectsPage() {
+  const subTypes = await getApi<ISubType[]>(`/api/classificators/subjects`)
+
+  return <Wrapper subTypes={subTypes} />
 }
