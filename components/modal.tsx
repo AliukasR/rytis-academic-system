@@ -47,7 +47,7 @@ export function Modal(props: IProps) {
           <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
           <button
             type="button"
-            className="ms-auto flex items-ceter justify-center rounded-lg hover:bg-gray-200 hover:text-gray-900"
+            className="ms-auto flex items-center justify-center rounded-lg hover:bg-gray-200 hover:text-gray-900"
             onClick={() => setOpenModal(false)}
           >
             <XMarkIcon className="h-7 w-7 stroke-gray-400" />
