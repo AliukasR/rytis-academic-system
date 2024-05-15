@@ -8,6 +8,7 @@ type IProps = {
   certificates: ICertificate[]
   setEditCert: (cert: ICertificate) => void
   deleteCertFromApi: (cert: ICertificate) => void
+  isDeleting: boolean
 }
 
 export function CertList(props: IProps) {

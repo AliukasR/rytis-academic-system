@@ -11,6 +11,7 @@ export function Wrapper(props: IProps) {
   const { certTypes } = props
   const [editCert, setEditCert] = useState<ICertificate | undefined>()
   const [certificates, setCertificates] = useState<ICertificate[]>([])
+  const [isDeleting, setIsDeleting] = useState<boolean>(false) // State for deletion operation
 
   const getCertFromApi = () => {
     getApi<ICertificate[]>(`/api/certificates`).then((res: ICertificate[]) => {
@@ -27,9 +28,16 @@ export function Wrapper(props: IProps) {
       console.error("Cannot delete ")
       return
     }
+    setIsDeleting(true) // Set deletion state to true
     deleteApi(`/api/certificates/${cert.id}`)
-      .then(() => getCertFromApi())
-      .catch((error) => console.error("Error deleting certificate", error))
+      .then(() => {
+        getCertFromApi()
+        setIsDeleting(false) // Reset deletion state on successful deletion
+      })
+      .catch((error) => {
+        console.error("Error deleting certificate", error)
+        setIsDeleting(false) // Reset deletion state if deletion fails
+      })
   }
 
   return (
@@ -45,6 +53,7 @@ export function Wrapper(props: IProps) {
         certificates={certificates}
         setEditCert={setEditCert}
         deleteCertFromApi={deleteCertFromApi}
+        isDeleting={isDeleting} // Pass deletion state to the CertList component
       />
     </div>
   )
