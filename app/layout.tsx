@@ -2,14 +2,6 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { ICertificate } from "@/components/types/certificate.t"
-import { ISubject } from "@/components/types/subject.t"
-
-type IMyDB = { certificates: ICertificate[]; subjects: ISubject[] }
-export const myDB: IMyDB = {
-  certificates: [],
-  subjects: [],
-}
 
 export const metadata: Metadata = {
   title: "Rycio akademine sistema",

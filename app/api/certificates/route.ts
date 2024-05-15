@@ -1,15 +1,15 @@
-import { myDB } from "@/app/layout"
+import { CertificateService } from "@/services/CertificateService"
 import { type NextRequest } from "next/server"
 
-export function GET(request: NextRequest) {
-  return Response.json(myDB.certificates)
+export async function GET(request: NextRequest) {
+  const certificateService = new CertificateService()
+  const certificates = await certificateService.getCertificates()
+  return Response.json(certificates)
 }
 
 export async function POST(request: NextRequest) {
-  console.log("-----")
   const res = await request.json()
-  const myCertificates = myDB.certificates
-  res.id = myCertificates.length + 1
-  myCertificates.push(res)
+  const certificateService = new CertificateService()
+  await certificateService.saveCertificate(res)
   return Response.json({ message: "Duomenys išsaugoti" })
 }
